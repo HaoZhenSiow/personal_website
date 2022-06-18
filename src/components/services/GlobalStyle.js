@@ -9,6 +9,8 @@ const GlobalStyle = createGlobalStyle`
 :root {
   --grey: #545454;
   --yellow: #EFA019;
+  --bg-color: white;
+  --hero-marquee-opacity: 0.3;
 
   --fluid-container-padding: ${fluid.container(16, 220, 16)};
   --header-logo-font-size: ${fluid.calc(28, 36, 'Full', 'px')};
@@ -28,8 +30,8 @@ const GlobalStyle = createGlobalStyle`
   --hero-content-title-margin-top: 2.5rem;
   --hero-content-title-span-font-size: ${fluid.calc(24, 56, 'Full', 'px')};
   --hero-content-title-span-line-height: ${fluid.calc(29.26, 68.26, 'Full', 'px')};
-  --hero-content-font-size: ${fluid.calc(16, 18, 'Full', 'px')};
-  --hero-content-line-height: ${fluid.calc(19.5, 21.94, 'Full', 'px')};
+  --hero-content-font-size: ${fluid.calc(16, 24, 'Full', 'px')};
+  --hero-content-line-height: ${fluid.calc(19.5, 26, 'Full', 'px')};
 }
 
 @media (min-width: 768px) {
@@ -42,7 +44,19 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 
-* {box-sizing: border-box;}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --grey: #ececec;
+        --yellow: #ffd700;
+        --bg-color: #2d2d2d;
+        --hero-marquee-opacity: 0.1;
+    }
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
 
 html {
   font-family: 'Montserrat', sans-serif;
@@ -52,6 +66,7 @@ html {
 body {
     margin: 0;
     padding: 0;
+    background-color: var(--bg-color);
 }
 
 a {

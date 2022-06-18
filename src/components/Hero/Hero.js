@@ -19,6 +19,28 @@ const MAIN = styled.main`
   align-items: center;
   text-align: var(--hero-text-align);
   justify-content: right;
+
+  .marquee {
+    position: absolute;
+    top: ${fluid.calc(115, 135, 'Full', 'px')};
+    left: 0;
+    pointer-events: none;
+    z-index: -99;
+    opacity: var(--hero-marquee-opacity);
+
+    p {
+      margin: 0 0.3em;
+      font-family: 'Merienda One', cursive;
+      font-size: ${fluid.calc(120, 350, 'Full', 'px')};
+      color: #D3D3D3;
+      /* darkmode opacity 0.3 */
+    }
+  }
+`;
+
+const HeroImg = styled.div`
+  line-height: 0;
+  mask-image: linear-gradient(0deg, transparent 0%, black 34%);
 `;
 
 const HeroContent = styled.section`
@@ -56,13 +78,17 @@ function Hero(props) {
  return (
   <Fragment>
     <MAIN>
-      <IMG src={portrait} alt='portrait' />
+      <HeroImg>
+        <IMG src={portrait} alt='portrait' />
+      </HeroImg>
       <HeroContent aria-label='hero content'>
         <h1>Hi, I'm a<br/><span>Front-end Developer</span></h1>
         <p>I turn aesthethic and creative design into interactive and engaging website.</p>
         <HeroBtn>Resume</HeroBtn>
       </HeroContent>
-      <Marquee/>
+      <Marquee className='hero' clone='1' dir="left" alternate speed="25">
+        <p>HAO ZHEN</p>
+      </Marquee>
     </MAIN>
   </Fragment>
  );

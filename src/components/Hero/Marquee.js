@@ -1,103 +1,99 @@
-import React, { Fragment } from 'react';
-import { useEffect } from 'react';
+import React, { Fragment, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import fluid from '../services/fluid';
 
 const DIV = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -99;
-  overflow: hidden;
-  /* top: ${fluid.calc(-50, -170, 'Full', 'px')}; */
-  /* opacity: .2; */
+  width: 100vw;
   display: flex;
-  width: 100%;
+  overflow-x: hidden;
 
   .marquee__row {
-    --row-width: ${fluid.calc(1000, 2000, 'Full', 'px')};
-    /* display: inline-block; */
+    --pos-x: 0;
+    --translateX: calc(var(--pos-x) * 1px);
     flex-shrink: 0;
-    background-color: pink;
-    width: var(--row-width);
-    text-align: center;
-    transform: translateX(calc(var(--row-width) * -1));
-  }
-
-  div:nth-child(2) {
-    background-color: green;
-  }
-
-  p {
-    
-    margin: 0;
-    white-space: nowrap;
-    /* color: #D3D3D3; */
-    color: white;
-    font-family: 'Merienda One', cursive;
-    font-size: ${fluid.calc(170, 350, 'Full', 'px')};
+    min-width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    transform: translateX(var(--translateX));
   }
 `;
 
-function Marquee(props) {
-  const moveLeft = () => {
-    const rows = document.querySelectorAll('.marquee__row');
-    rows.forEach(row => {
-      let rowWidth = row.getBoundingClientRect().width;
-      let rowPosX = Number(getComputedStyle(row).getPropertyValue('--pos-x')) ? Number(getComputedStyle(row).getPropertyValue('--pos-x')) : -rowWidth;
-      if (rowPosX < -2 * rowWidth) {
-        rowPosX = -rowWidth + 1;
-      };
-      row.style.setProperty('transform', `translateX(${rowPosX - 1}px)`);
-      row.style.setProperty('--pos-x', (rowPosX - 1));
-    });
-  };
+function Marquee(props) { 
+
+  const marqueeRef = useRef();
+  const marqueeRow1Ref = useRef();
+  const marqueeRow2Ref = useRef();
+  const marqueeRow3Ref = useRef();
+  const cloneNum = Number(props.clone) ? Number(props.clone) : 1;
+  let marqueeItems = [];
+  for (let i = 0; i < cloneNum; i++) {
+    marqueeItems.push(props.children);
+  }
+
   
-  const moveRight = () => {
-    const rows = document.querySelectorAll('marquee__row');
-    rows.forEach(row => {
-      let rowWidth = row.getBoundingClientRect().width;
-      let rowPosX = Number(getComputedStyle(row).getPropertyValue('--pos-x')) ? Number(getComputedStyle(row).getPropertyValue('--pos-x')) : -rowWidth;
-      if (rowPosX > rowWidth) {
-        rowPosX = -rowWidth;
-      };
-      row.style.setProperty('transform', `translateX(${rowPosX + 1}px)`);
-      row.style.setProperty('--pos-x', (rowPosX + 1));
-    });  
-  };
+  useEffect(() => {
 
-  let posY = 0;
-  let speed = 25;
-  let myInterval = setInterval(moveLeft, speed);
+    const marqueeMove = (direction) => {
+      [marqueeRow1Ref.current,
+       marqueeRow2Ref.current, 
+       marqueeRow3Ref.current].forEach(row => {
+        let rowWidth = row.getBoundingClientRect().width;
+        let currentX = Number(getComputedStyle(row).getPropertyValue('--pos-x'));
+        let newX = 0;
+        switch (direction) {
+          case 'right':
+            newX = currentX ? (currentX + 1) : -rowWidth;
+            (newX > 0) && (newX = -rowWidth);
+            break;
+          default:
+            newX = currentX ? (currentX - 1) : -rowWidth;
+            (newX < (-2 * rowWidth)) && (newX = -rowWidth);
+        }
+        row.style.setProperty('--pos-x', newX);
+      });
+    };
 
-  const changeMarqueeDir = () => {
-    console.log('heha');
-    clearInterval(myInterval);
-    if (document.documentElement.scrollTop > posY) {
-      moveRight();
-      moveRight();
-      myInterval = setInterval(moveRight, speed);
-    } else {
-      moveLeft();
-      moveLeft();
-      myInterval = setInterval(moveLeft, speed);
-    }
-    posY = document.documentElement.scrollTop;  
-  };
+    const changeDir = () => {
+      clearInterval(marqueeInterval);
+      let scrollTop = document.documentElement.scrollTop;
+      let opposite = (props.dir === 'right') ? 'left' : 'right';
+      direction = (scrollTop > posY) ? props.dir : opposite;
+      marqueeMove(direction);
+      marqueeMove(direction);
+      marqueeInterval = setInterval(marqueeMove, speed, direction);
+      posY = scrollTop;
+    };
 
-  window.addEventListener('scroll', changeMarqueeDir);
-  // useEffect(() => {
-    
-  // }, []);
- return (
+    let direction = props.dir;
+    let posY = 0;
+    const speed = Number(props.speed) ? Number(props.speed) : 25;
+    let marqueeInterval = setInterval(marqueeMove, speed, direction);
+    console.log(props.alternate);
+    if (props.alternate) {
+      window.addEventListener('scroll', changeDir);
+     }
+    return () => {
+      clearInterval(marqueeInterval);
+      window.removeEventListener('scroll', changeDir);
+    };
+
+  }, [props]);
+
+
+  return (
   <Fragment>
-    <DIV className='marquee'>
-      <div className='marquee__row'><p>HAO ZHEN</p></div>
-      <div className='marquee__row'><p>HAO ZHEN</p></div>
-      <div className='marquee__row'><p>HAO ZHEN</p></div>
+    <DIV className={`marquee marquee--${props.className}`} ref={marqueeRef}>
+      <div className={`marquee__row marquee__row--${props.className}`} ref={marqueeRow1Ref}>
+        {marqueeItems}
+      </div>
+      <div className={`marquee__row marquee__row--${props.className}`} ref={marqueeRow2Ref}>
+        {marqueeItems}
+      </div>
+      <div className={`marquee__row marquee__row--${props.className}`} ref={marqueeRow3Ref}>
+        {marqueeItems}
+      </div>
     </DIV>
   </Fragment>
- );
+  );
 }
 
 export default Marquee;
