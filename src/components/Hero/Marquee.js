@@ -67,7 +67,6 @@ function Marquee(props) {
     let posY = 0;
     const speed = Number(props.speed) ? Number(props.speed) : 25;
     let marqueeInterval = setInterval(marqueeMove, speed, direction);
-    console.log(props.alternate);
     if (props.alternate) {
       window.addEventListener('scroll', changeDir);
      }
