@@ -32,37 +32,13 @@ const BTN = styled.span`
 		border: none;
 		mask-image: url(${sprite});
 		mask-size: 7100% 100%;
-	  animation: ani2 0.7s steps(70) forwards;
+		mask-position: 0 0;
+		transition: mask-position 0.7s steps(70);
 
 	  &:hover {
-			animation: ani 0.7s steps(70) forwards;
+			mask-position: 100% 0;
 		}
 	}
-
-
-
-@keyframes ani {
-	from {
-		 -webkit-mask-position: 0 0;
-		 mask-position: 0 0;
-	}
-	to {
-		 -webkit-mask-position: 100% 0;
-		 mask-position: 100% 0;
-	}
-}
-
-@keyframes ani2 {
-	from {
-		 -webkit-mask-position: 100% 0;
-		 mask-position: 100% 0;
-	}
-	to {
-		 -webkit-mask-position: 0 0;
-		 mask-position: 0 0;
-	}
-}
-
 `;
 
 function HeroBtn(props) {
