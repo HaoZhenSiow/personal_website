@@ -5,6 +5,7 @@ const DIV = styled.div`
   width: 100vw;
   display: flex;
   overflow-x: hidden;
+  --pos-x: 0;
 
   .marquee__row {
     --pos-x: 0;
@@ -28,10 +29,8 @@ function Marquee(props) {
   for (let i = 0; i < cloneNum; i++) {
     marqueeItems.push(props.children);
   }
-
   
   useEffect(() => {
-
     const marqueeMove = (direction) => {
       [marqueeRow1Ref.current,
        marqueeRow2Ref.current, 
@@ -69,7 +68,7 @@ function Marquee(props) {
     let marqueeInterval = setInterval(marqueeMove, speed, direction);
     if (props.alternate) {
       window.addEventListener('scroll', changeDir);
-     }
+    }
     return () => {
       clearInterval(marqueeInterval);
       window.removeEventListener('scroll', changeDir);

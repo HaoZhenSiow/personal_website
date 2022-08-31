@@ -5,6 +5,11 @@ import Hamburder from './Hamburder';
 import Nav from './Nav';
 
 const HEADER = styled.header`
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background-color: var(--header-bg-color);
+  backdrop-filter: blur(5px);
   display: flex;
   justify-content: space-between;
   align-items: center;

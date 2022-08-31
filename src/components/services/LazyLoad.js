@@ -1,11 +1,11 @@
-import React, { Fragment, useCallback, useEffect, useRef, useState } from 'react';
+import React, { Fragment, useCallback, useEffect, useRef } from 'react';
 
 const LazyLoad = props => {
   const target = React.Children.only(props.children);
   const container = target.type;
+  const className = target.props.className;
   const children = target.props.children;
   const myRef = useRef();
-  const [childDOM, setChildDOM] = useState([]);
   const detect = useCallback(() => {
     let posY = myRef.current.getBoundingClientRect().y;
     let depth = Number(props.lazyload ? props.lazyload : 1);
@@ -14,28 +14,23 @@ const LazyLoad = props => {
     }
   }, [props.lazyload]);
 
-  useEffect(() => {
-    let childNode = React.createElement(
-      container,
-      { className: `${props.className}`, ref: myRef },
-      children
-    );
-    setChildDOM(childNode);
-  }, [props, container, children, myRef]);
+  let childNode = React.createElement(
+    container,
+    { className: className, ref: myRef },
+    children
+  );
 
   useEffect(() => {
-    // myRef is undefined at this point
-    let detectTimeout = setTimeout(detect, 1);
+    detect();
     window.addEventListener('scroll', detect);
     return () => {
-      clearTimeout(detectTimeout);
       window.removeEventListener('scroll', detect);
     };
-  }, [childDOM, detect]);
+  }, [detect]);
 
   return (
     <Fragment>
-      {childDOM}
+      {childNode}
     </Fragment>
   );
 }
