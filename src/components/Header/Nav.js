@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const NAV = styled.nav`
@@ -41,11 +41,6 @@ const NAV = styled.nav`
     transform: translateY(-108%);
   }
 
-  
-  /* a:hover {
-    color: var(--yellow);
-  } */
-
   @media (max-width: 860px) {
     display: none;
   }
@@ -54,15 +49,13 @@ const NAV = styled.nav`
 
 function Nav(props) {
  return (
-  <Fragment>
-    <NAV>
-      <li><a href='google.com'><span data-hover='about'>about</span></a></li>
-      <li><a href='google.com'><span data-hover='work'>work</span></a></li>
-      <li><a href='google.com'><span data-hover='github'>github</span></a></li>
-      <li><a href='google.com'><span data-hover='linkedin'>linkedin</span></a></li>
-      <li><a href='google.com'><span data-hover='codepen'>codepen</span></a></li>
-    </NAV>
-  </Fragment>
+  <NAV>
+    <li><a href='google.com'><span data-hover='about'>about</span></a></li>
+    <li><a href='google.com'><span data-hover='work'>work</span></a></li>
+    <li><a href='google.com'><span data-hover='github'>github</span></a></li>
+    <li><a href='google.com'><span data-hover='linkedin'>linkedin</span></a></li>
+    <li><a href='google.com'><span data-hover='codepen'>codepen</span></a></li>
+  </NAV>
  );
 }
 

@@ -1,6 +1,4 @@
 import React from 'react';
-import { useEffect } from 'react';
-import { useRef } from 'react';
 
 const snippetArray = [
   {title: 'Demon Slayer: Infinity Train', src: 'https://codepen.io/HaoZhenSiow/embed/NWyeeez?default-tab=result', desc: `See the Pen &lt;a href="https://codepen.io/HaoZhenSiow/pen/NWyeeez"&gt; Demon
@@ -62,12 +60,8 @@ const SnippetJSX = snippetArray.map(({title, src, desc}, index) => {
 });
 
 const Snippets = props => {
-  const SnippetRef = useRef();
-  useEffect(() => {
-    console.log(SnippetRef.current.children);
-  }, []);
   return (
-    <div className='snippets' ref={SnippetRef}>
+    <div className='snippets'>
       {SnippetJSX}
     </div>
   );

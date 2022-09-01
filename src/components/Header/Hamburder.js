@@ -23,28 +23,32 @@ const DIV = styled.div`
   }
 
   span:first-child {top: 10%;}
-  &.hamburger--close:hover span:first-child {top: 20%;}
-  &.hamburger--open span:first-child {
+  &.hamburger--closed:hover span:first-child {top: 20%;}
+  &.hamburger--opened span:first-child {
     top: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
     transition: 500ms;
   }
-  &.hamburger--open:hover span:first-child {
+  &.hamburger--opened:hover span:first-child {
     transform: translate(-50%, -50%) rotate(135deg);
   }
 
   span:nth-child(2) {transition-duration: 0s;}
-  &.hamburger--open span:nth-child(2) {display: none;}
+  &.hamburger--opened span:nth-child(2) {display: none;}
 
   span:last-child {top: 90%;}
-  &.hamburger--close:hover span:last-child {top: 80%;}
-  &.hamburger--open span:last-child {
+  &.hamburger--closed:hover span:last-child {top: 80%;}
+  &.hamburger--opened span:last-child {
     top: 50%;
     transform: translate(-50%, -50%) rotate(135deg);
     transition: 500ms;
   }
-  &.hamburger--open:hover span:last-child {
+  &.hamburger--opened:hover span:last-child {
     transform: translate(-50%, -50%) rotate(225deg);
+  }
+
+  &.hamburger--opened span {
+    background-color: var(--bg-color);
   }
 
   @media (min-width: 860px) {
@@ -54,18 +58,12 @@ const DIV = styled.div`
 
 
 function Hamburder(props) {
-  function openMenu(event) {
-    event.target.classList.toggle('hamburger--open');
-    event.target.classList.toggle('hamburger--close');
-  };
  return (
-  <Fragment>
-    <DIV className="hamburger hamburger--close" onClick={openMenu}>
-      <span></span>
-      <span></span>
-      <span></span>
-    </DIV>
-  </Fragment>
+  <DIV className="hamburger hamburger--closed" onClick={props.openMenu}>
+    <span></span>
+    <span></span>
+    <span></span>
+  </DIV>
  );
 }
 
