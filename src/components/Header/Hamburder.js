@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import { forwardRef } from 'react';
 import styled from 'styled-components';
 
 const DIV = styled.div`
@@ -57,9 +58,9 @@ const DIV = styled.div`
 `;
 
 
-function Hamburder(props) {
+function Hamburder(props, ref) {
  return (
-  <DIV className="hamburger hamburger--closed" onClick={props.openMenu}>
+  <DIV className="hamburger hamburger--closed" onClick={props.openMenu} ref={ref}>
     <span></span>
     <span></span>
     <span></span>
@@ -67,4 +68,4 @@ function Hamburder(props) {
  );
 }
 
-export default Hamburder;
+export default forwardRef(Hamburder);

@@ -90,12 +90,12 @@ const HamburgerMenu = styled.div`
 function Header(props) {
 
   const headerRef = useRef();
-
+  const HamburgerRef = useRef();
   const HamburgerMenuRef = useRef();
 
   function openMenu(event) {
-    event.target.classList.toggle('hamburger--opened');
-    event.target.classList.toggle('hamburger--closed');
+    HamburgerRef.current.classList.toggle('hamburger--opened');
+    HamburgerRef.current.classList.toggle('hamburger--closed');
     HamburgerMenuRef.current.classList.toggle('HamburgerMenu--closed');
     headerRef.current.classList.toggle('blur');
   };
@@ -104,16 +104,16 @@ function Header(props) {
   <Fragment>
     <HamburgerMenu ref={HamburgerMenuRef} className='HamburgerMenu--closed'>
       <nav>
-        <li><a href='google.com'><span data-hover='about'>about</span></a></li>
-        <li><a href='google.com'><span data-hover='work'>work</span></a></li>
-        <li><a href='google.com'><span data-hover='github'>github</span></a></li>
-        <li><a href='google.com'><span data-hover='linkedin'>linkedin</span></a></li>
-        <li><a href='google.com'><span data-hover='codepen'>codepen</span></a></li>
+        {/* <li><a href='google.com'><span data-hover='about'>about</span></a></li> */}
+        <li><a href='#work' onClick={openMenu}><span data-hover='work'>work</span></a></li>
+        <li><a href='https://github.com/HaoZhenSiow' target='_blank' rel='noreferrer'><span data-hover='github'>github</span></a></li>
+        <li><a href='https://www.linkedin.com/in/siowhaozhen/' target='_blank' rel='noreferrer'><span data-hover='linkedin'>linkedin</span></a></li>
+        <li><a href='#codepen' onClick={openMenu}><span data-hover='codepen'>codepen</span></a></li>
       </nav>
     </HamburgerMenu>
     <HEADER ref={headerRef} className='blur'>
        <a className='logo' href="index.html">HAO ZHEN</a>
-       <Hamburder openMenu={openMenu}/>
+       <Hamburder openMenu={openMenu} ref={HamburgerRef}/>
        <Nav/>
     </HEADER>
     

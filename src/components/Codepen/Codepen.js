@@ -6,8 +6,8 @@ import TextAnimation1 from '../services/TextAnimation1';
 
 const CODEPEN = styled.div`
   padding: var(--fluid-container-padding);
-  margin-top: 200px;
-  margin-top: var(--work-margin-top);
+  margin-top: calc(var(--work-margin-top) / 2 - 5px);
+  padding-top: calc(var(--work-margin-top) / 2 + 5px);
   text-align: center;
   opacity: 0;
   transform: translateY(50px);
@@ -56,7 +56,7 @@ const CODEPEN = styled.div`
 const Codepen = props => {
   return (
     <LazyLoad lazyload='0.99'>
-      <CODEPEN>
+      <CODEPEN attr={{'id': 'codepen'}}>
         <TextAnimation1 delay='0.1'>
           <h2>Codepen Snippets</h2>
         </TextAnimation1>

@@ -50,11 +50,11 @@ const NAV = styled.nav`
 function Nav(props) {
  return (
   <NAV>
-    <li><a href='google.com'><span data-hover='about'>about</span></a></li>
-    <li><a href='google.com'><span data-hover='work'>work</span></a></li>
-    <li><a href='google.com'><span data-hover='github'>github</span></a></li>
-    <li><a href='google.com'><span data-hover='linkedin'>linkedin</span></a></li>
-    <li><a href='google.com'><span data-hover='codepen'>codepen</span></a></li>
+    {/* <li><a href='google.com'><span data-hover='about'>about</span></a></li> */}
+    <li><a href='#work'><span data-hover='work'>work</span></a></li>
+    <li><a href='https://github.com/HaoZhenSiow' target='_blank' rel='noreferrer'><span data-hover='github'>github</span></a></li>
+    <li><a href='https://www.linkedin.com/in/siowhaozhen/' target='_blank' rel='noreferrer'><span data-hover='linkedin'>linkedin</span></a></li>
+    <li><a href='#codepen'><span data-hover='codepen'>codepen</span></a></li>
   </NAV>
  );
 }

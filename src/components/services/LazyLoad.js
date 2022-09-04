@@ -3,6 +3,7 @@ import React, { Fragment, useCallback, useEffect, useRef } from 'react';
 const LazyLoad = props => {
   const target = React.Children.only(props.children);
   const container = target.type;
+  const attr = target.props.attr;
   const className = target.props.className;
   const children = target.props.children;
   const myRef = useRef();
@@ -16,7 +17,7 @@ const LazyLoad = props => {
 
   let childNode = React.createElement(
     container,
-    { className: className, ref: myRef },
+    { className: className, ref: myRef, ...attr },
     children
   );
 
