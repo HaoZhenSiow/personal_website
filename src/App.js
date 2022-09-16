@@ -12,10 +12,7 @@ function App() {
       <Work/>
       <Codepen/>
       <Footer/>
-      {/* sticky nav
-          hamburger menu
-          rellax hero text 
-          hero btn animation appear, hero text also*/}
+      {/* change work to align center when modile size*/}
     </>
   );
 }
