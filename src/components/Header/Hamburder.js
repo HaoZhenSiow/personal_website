@@ -1,5 +1,4 @@
-import React from 'react';
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 
 const DIV = styled.div`
@@ -23,33 +22,33 @@ const DIV = styled.div`
     pointer-events: none;
   }
 
-  span:first-child {top: 10%;}
-  &.hamburger--closed:hover span:first-child {top: 20%;}
-  &.hamburger--opened span:first-child {
+  &.hamburger--open span {
+    background-color: var(--bg-color);
+  }
+
+  #bar1 {top: 10%;}
+  &:hover #bar1 {top: 20%;}
+  &.hamburger--open #bar1 {
     top: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
     transition: 500ms;
   }
-  &.hamburger--opened:hover span:first-child {
+  &.hamburger--open:hover #bar1 {
     transform: translate(-50%, -50%) rotate(135deg);
   }
 
-  span:nth-child(2) {transition-duration: 0s;}
-  &.hamburger--opened span:nth-child(2) {display: none;}
+  #bar2 {transition-duration: 0s;}
+  &.hamburger--open #bar2 {display: none;}
 
-  span:last-child {top: 90%;}
-  &.hamburger--closed:hover span:last-child {top: 80%;}
-  &.hamburger--opened span:last-child {
+  #bar3 {top: 90%;}
+  &:hover #bar3 {top: 80%;}
+  &.hamburger--open #bar3 {
     top: 50%;
     transform: translate(-50%, -50%) rotate(135deg);
     transition: 500ms;
   }
-  &.hamburger--opened:hover span:last-child {
+  &.hamburger--open:hover #bar3 {
     transform: translate(-50%, -50%) rotate(225deg);
-  }
-
-  &.hamburger--opened span {
-    background-color: var(--bg-color);
   }
 
   @media (min-width: 860px) {
@@ -60,10 +59,10 @@ const DIV = styled.div`
 
 function Hamburder(props, ref) {
  return (
-  <DIV className="hamburger hamburger--closed" onClick={props.openMenu} ref={ref}>
-    <span></span>
-    <span></span>
-    <span></span>
+  <DIV className="hamburger" onClick={props.openMenu} ref={ref}>
+    <span id='bar1'></span>
+    <span id='bar2'></span>
+    <span id='bar3'></span>
   </DIV>
  );
 }

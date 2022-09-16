@@ -12,7 +12,6 @@ function App() {
       <Work/>
       <Codepen/>
       <Footer/>
-      {/* change work to align center when modile size*/}
     </>
   );
 }

@@ -1,18 +1,40 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import sprite from '../../assets/backgroundSprite.png';
 import resume from '../../assets/siowhaozhen-resume.pdf';
 
 const BTN = styled.span`
-  display: inline-block;
- 	outline: 2px solid var(--yellow);
- 	position: relative;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  border-radius: 6px;
-	overflow: hidden;
-	width: 6em;
-	height: 2em;
+	@keyframes mask-move {
+	from {
+		 -webkit-mask-position: 0 0;
+		 mask-position: 0 0;
+	}
+	to {
+		 -webkit-mask-position: 100% 0;
+		 mask-position: 100% 0;
+	}
+}
+
+@keyframes mask-reverse {
+	from {
+		 -webkit-mask-position: 100% 0;
+		 mask-position: 100% 0;
+	}
+	to {
+		 -webkit-mask-position: 0 0;
+		 mask-position: 0 0;
+	}
+}
+
+display: inline-block;
+outline: 2px solid var(--yellow);
+position: relative;
+font-family: 'Montserrat', sans-serif;
+font-weight: 700;
+border-radius: 6px;
+overflow: hidden;
+width: 6em;
+height: 2em;
 
   &:before {
 	 	content: "Resume";
@@ -41,46 +63,20 @@ const BTN = styled.span`
 		border: none;
 		mask-image: url(${sprite});
 		mask-size: 7100% 100%;
-	  animation: ani2 0.7s steps(70) forwards;
+	  animation: mask-reverse 0.7s steps(70) forwards;
 
 	  &:hover {
-			animation: ani 0.7s steps(70) forwards;
+			animation: mask-move 0.7s steps(70) forwards;
 		}
 	}
-
-
-
-@keyframes ani {
-	from {
-		 -webkit-mask-position: 0 0;
-		 mask-position: 0 0;
-	}
-	to {
-		 -webkit-mask-position: 100% 0;
-		 mask-position: 100% 0;
-	}
-}
-
-@keyframes ani2 {
-	from {
-		 -webkit-mask-position: 100% 0;
-		 mask-position: 100% 0;
-	}
-	to {
-		 -webkit-mask-position: 0 0;
-		 mask-position: 0 0;
-	}
-}
 
 `;
 
 function HeroBtn(props) {
  return (
-  <Fragment>
-    <BTN>
-      <button onClick={() => {window.open(resume);}}>{props.children}</button>
-    </BTN>
-  </Fragment>
+	<BTN>
+		<button onClick={() => {window.open(resume);}}>{props.children}</button>
+	</BTN>
  );
 }
 
