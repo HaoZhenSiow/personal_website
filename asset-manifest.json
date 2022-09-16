@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/personal_website/static/css/main.e6c13ad2.css",
+    "main.js": "/personal_website/static/js/main.3193a178.js",
+    "static/js/787.202b8111.chunk.js": "/personal_website/static/js/787.202b8111.chunk.js",
+    "static/media/backgroundSprite.png": "/personal_website/static/media/backgroundSprite.4dbf15959f88ffd8cabb.png",
+    "static/media/me.png": "/personal_website/static/media/me.14d8f1508c317d63e990.png",
+    "static/media/siowhaozhen-resume.pdf": "/personal_website/static/media/siowhaozhen-resume.8b853b4393e0ec5b7689.pdf",
+    "static/media/equalizer.jpg": "/personal_website/static/media/equalizer.b7ae44b65d1292bdab95.jpg",
+    "static/media/suite.jpg": "/personal_website/static/media/suite.1bb0699ceeafa3b8ea10.jpg",
+    "static/media/e-learning.jpg": "/personal_website/static/media/e-learning.a4997a111204c92a99c6.jpg",
+    "static/media/pod.jpg": "/personal_website/static/media/pod.5f50b8de313d47ee1786.jpg",
+    "static/media/meet-landing.jpg": "/personal_website/static/media/meet-landing.1b9010a91f7cff5cfb70.jpg",
+    "static/media/stats-preview.jpg": "/personal_website/static/media/stats-preview.b3d57df092426478992c.jpg",
+    "static/media/order-summary.jpg": "/personal_website/static/media/order-summary.013c2c1239704da21ec6.jpg",
+    "static/media/nft.jpg": "/personal_website/static/media/nft.f78e44e3755acfb37ad0.jpg",
+    "static/media/QRcode.jpg": "/personal_website/static/media/QRcode.a290751393ffa03e3f01.jpg",
+    "static/media/rating.jpg": "/personal_website/static/media/rating.0544911a05dec7aaf0c4.jpg",
+    "index.html": "/personal_website/index.html",
+    "main.e6c13ad2.css.map": "/personal_website/static/css/main.e6c13ad2.css.map",
+    "main.3193a178.js.map": "/personal_website/static/js/main.3193a178.js.map",
+    "787.202b8111.chunk.js.map": "/personal_website/static/js/787.202b8111.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.3193a178.js"
+  ]
+}
