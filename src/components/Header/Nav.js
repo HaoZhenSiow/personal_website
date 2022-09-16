@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import resume from '../../assets/siowhaozhen-resume.pdf';
 
 const NAV = styled.nav`
   display: flex;
@@ -51,6 +52,7 @@ function Nav(props) {
  return (
   <NAV>
     {/* <li><a href='google.com'><span data-hover='about'>about</span></a></li> */}
+    <li><a href={resume} rel="noopener noreferrer" target="_blank"><span data-hover='resume'>resume</span></a></li>
     <li><a href='#work'><span data-hover='work'>work</span></a></li>
     <li><a href='https://github.com/HaoZhenSiow' target='_blank' rel='noreferrer'><span data-hover='github'>github</span></a></li>
     <li><a href='https://www.linkedin.com/in/siowhaozhen/' target='_blank' rel='noreferrer'><span data-hover='linkedin'>linkedin</span></a></li>

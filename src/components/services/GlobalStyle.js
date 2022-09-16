@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   --yellow: #EFA019;
   --bg-color: white;
   --header-bg-color: rgba(255,255,255,0.6);
-  --work-layout-shadow: 3px 3px 25px #d8d8d8;
+  --work-layout-shadow: 15px 15px 15px #d8d8d8;
   --hero-marquee-opacity: 0.3;
 
   --fluid-container-padding: ${fluid.container(16, 200, 16)};
@@ -42,6 +42,7 @@ const GlobalStyle = createGlobalStyle`
   --work-h2-letter-spacing: ${fluid.calc(2, 6, 'Full', 'px')};
 
   --snippet-height: ${fluid.calc(300, 400, 's', 'px')};
+  --snippet-height: auto;
 }
 
 @media (min-width: 768px) {
@@ -54,7 +55,8 @@ const GlobalStyle = createGlobalStyle`
     --hero-content-title-span-font-size: ${fluid.calc(22, 56, 'Full', 'px')};
     --hero-content-title-margin-top: 0;
 
-    --snippet-height: ${fluid.calc(400, 550, 'b', 'px')};
+    --snippet-height: ${fluid.calc(400, 500, 'b', 'px')};
+    --snippet-height: auto;
   }
 }
 

@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import { useRef } from 'react';
 import styled from 'styled-components';
-// import fluid from '../services/fluid';
 import Hamburder from './Hamburder';
 import Nav from './Nav';
+import resume from '../../assets/siowhaozhen-resume.pdf';
 
 const HEADER = styled.header`
   pointer-events: none;
@@ -105,6 +105,7 @@ function Header(props) {
     <HamburgerMenu ref={HamburgerMenuRef} className='HamburgerMenu--closed'>
       <nav>
         {/* <li><a href='google.com'><span data-hover='about'>about</span></a></li> */}
+        <li><a href={resume} rel="noopener noreferrer" target="_blank"><span data-hover='resume'>resume</span></a></li>
         <li><a href='#work' onClick={openMenu}><span data-hover='work'>work</span></a></li>
         <li><a href='https://github.com/HaoZhenSiow' target='_blank' rel='noreferrer'><span data-hover='github'>github</span></a></li>
         <li><a href='https://www.linkedin.com/in/siowhaozhen/' target='_blank' rel='noreferrer'><span data-hover='linkedin'>linkedin</span></a></li>

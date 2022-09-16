@@ -41,9 +41,13 @@ const CODEPEN = styled.div`
 
   .snippets {
     margin-top: var(--work-layout-margin-top);
+    display: grid;
+    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(350px,1fr));
+    grid-template-rows: auto;
 
     iframe {
-      margin-bottom: 40px;
+      /* margin-bottom: 40px; */
       width: 100%;
       height: var(--snippet-height);
     }

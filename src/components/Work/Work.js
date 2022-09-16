@@ -42,7 +42,7 @@ const Work = props => {
     <LazyLoad lazyload='0.99'>
       <WORK attr={{'id': 'work'}}>
         <TextAnimation1 delay='0.05'>
-          <h2>Front-end Mentor<wbr/> Projects</h2>
+          <h2>Personal<wbr/> Projects</h2>
         </TextAnimation1>
         <p>These are the projects I have been working on. Frontend Mentor challenges help me improve me coding skills by building realistic projects.</p>
         <WorkLayout/>

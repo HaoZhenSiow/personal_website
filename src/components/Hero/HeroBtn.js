@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import sprite from '../../assets/backgroundSprite.png';
+import resume from '../../assets/siowhaozhen-resume.pdf';
 
 const BTN = styled.span`
   display: inline-block;
@@ -77,7 +78,7 @@ function HeroBtn(props) {
  return (
   <Fragment>
     <BTN>
-      <button>{props.children}</button>
+      <button onClick={() => {window.open(resume);}}>{props.children}</button>
     </BTN>
   </Fragment>
  );
