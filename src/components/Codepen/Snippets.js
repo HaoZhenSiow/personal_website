@@ -2,6 +2,7 @@ import React from 'react';
 import { useRef } from 'react';
 
 const snippetArray = [
+  {title: 'Hamburger Menu', src: 'https://codepen.io/HaoZhenSiow/embed/preview/OJQqpzR?default-tab=result'},
   {title: 'Button UI', src: 'https://codepen.io/HaoZhenSiow/embed/preview/WNJwVJd?default-tabs=css%2Cresult&host=https%3A%2F%2Fcodepen.io&slug-hash=WNJwVJd'},
   {title: 'Image Sprite Mask', src: 'https://codepen.io/HaoZhenSiow/embed/preview/NWMNEmb?default-tab=result'},
   {title: 'Demon Slayer: Infinity Train', src: 'https://codepen.io/HaoZhenSiow/embed/preview/NWyeeez?default-tab=result'},
