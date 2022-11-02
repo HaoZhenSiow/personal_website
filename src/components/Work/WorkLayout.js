@@ -9,6 +9,10 @@ const Container = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   grid-template-rows: auto;
   margin-top: var(--work-layout-margin-top);
+
+  @media (max-width: 500px) {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
 `;
 
 const WorkLayout = props => {
